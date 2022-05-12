@@ -1,8 +1,8 @@
 import express from 'express';
 import { getLessons, createLesson } from './helpers';
 import { getLessonByHash, updateLessonByHash, deleteLessonByHash } from './hash';
-import { addVideos } from './hash/videos';
-import { getVideoLesson, deleteVideoLesson } from './hash/videos/hash';
+import { addLessonVideo, getVideoLesson, deleteVideoLesson } from './hash/videos';
+import { addKeynotesLesson, getKeynotesLesson, deleteKeynotesLesson } from './hash/keynotes';
 
 const router = express.Router();
 
@@ -13,8 +13,13 @@ router.get('/:lessonHash', getLessonByHash);
 router.put('/:lessonHash', updateLessonByHash);
 router.delete('/:lessonHash', deleteLessonByHash);
 
-router.post('/:lessonHash/videos', addVideos);
-router.get('/:lessonHash/videos/:videoHash ', getVideoLesson);
-router.delete('/:lessonHash/videos/:videoHash ', deleteVideoLesson);
+router.post('/:lessonHash/videos', addLessonVideo);
+router.get('/:lessonHash/videos/:videoHash', getVideoLesson);
+router.delete('/:lessonHash/videos/:videoHash', deleteVideoLesson);
+
+router.post('/:lessonHash/keynotes', addKeynotesLesson);
+
+router.get('/:lessonHash/keynotes/:keynoteHash', getKeynotesLesson);
+router.delete('/:lessonHash/keynotes/:keynoteHash', deleteKeynotesLesson);
 
 export { router as lessons };

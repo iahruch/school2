@@ -1,4 +1,4 @@
-export const addLessonVideo = (req, res) => {
+export const addKeynotesLesson = (req, res) => {
     try {
         res.sendStatus(204);
     } catch (error) {
@@ -6,15 +6,15 @@ export const addLessonVideo = (req, res) => {
     }
 };
 
-export const getVideoLesson = (req, res) => {
+export const getKeynotesLesson = (req, res) => {
     try {
-        res.sendStatus(204);
+        res.status(204).end();
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-export const deleteVideoLesson = (req, res) => {
+export const deleteKeynotesLesson = (req, res) => {
     try {
         res.sendStatus(204);
     } catch (error) {

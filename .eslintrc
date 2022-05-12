@@ -215,8 +215,8 @@
       2,
       "always",
       {
-        "arraysInArrays": false,
-        "objectsInArrays": false
+        "arraysInArrays": true,
+        "objectsInArrays": true
       }
     ],
     "block-spacing": 2,
