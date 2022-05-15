@@ -6,6 +6,7 @@ import session from 'express-session';
 // Instruments
 import {
     sessionOptions,
+    logger,
 } from './utils';
 
 // Routers
@@ -16,6 +17,7 @@ const app = express();
 
 app.use(session(sessionOptions));
 app.use(express.json({ limit: '10kb' })); //app.use(bodyParser.json({ limit: '10kb' }));
+app.use(logger);
 
 //Routers
 app.use('/users', routers.users);

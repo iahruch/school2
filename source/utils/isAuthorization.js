@@ -1,7 +1,7 @@
 import { ValidationError } from './errors/validationError';
 
 export const isAuthorization = (req, res, next) => {
-    console.log('req.headers() :>> ', req.header('Authorization'));
+    //console.log('req.headers() :>> ', req.header('Authorization'));
     const authHeader = req.header('Authorization');
     const { PASSWORD } = process.env;
 
@@ -12,6 +12,5 @@ export const isAuthorization = (req, res, next) => {
     if (authHeader !== PASSWORD) {
         throw new ValidationError('Entered incorrect password', 401);
     }
-    console.log('OK next');
     next();
 };

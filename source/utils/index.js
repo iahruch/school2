@@ -8,3 +8,6 @@ export { validator }
 from './validator';
 export { isAuthorization }
 from './isAuthorization';
+
+export { logger }
+from './logger';
