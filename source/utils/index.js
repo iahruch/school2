@@ -6,3 +6,5 @@ export { limiter }
 from './limiter.js';
 export { validator }
 from './validator';
+export { isAuthorization }
+from './isAuthorization';
