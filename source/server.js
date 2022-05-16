@@ -7,6 +7,7 @@ import session from 'express-session';
 import {
     sessionOptions,
     logger,
+    errorHandler
 } from './utils';
 
 // Routers
@@ -25,4 +26,6 @@ app.use('/auth', routers.auth);
 app.use('/classes', routers.classes);
 app.use('/lessons', routers.lessons);
 
+
+app.use(errorHandler);
 export { app };
