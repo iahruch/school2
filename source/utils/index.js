@@ -1,5 +1,10 @@
-export { getPort, getDBUrl, getPassword }
+export {
+    getPort,
+    getDBUrl,
+    getPassword,
+}
 from './env';
+
 export { sessionOptions }
 from './options';
 export { limiter }
@@ -12,5 +17,8 @@ from './isAuthorization';
 export { logger }
 from './logger';
 
-export { errorHandler }
+export { generalErrorHandler }
 from './errorHandler';
+
+export { otherRouterHandler }
+from './otherRoutersHandler';

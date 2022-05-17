@@ -1,13 +1,14 @@
 // Core
 import express from 'express';
 import session from 'express-session';
-// import bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
 
 // Instruments
 import {
     sessionOptions,
     logger,
-    errorHandler
+    generalErrorHandler,
+    otherRouterHandler,
 } from './utils';
 
 // Routers
@@ -17,7 +18,7 @@ const app = express();
 
 
 app.use(session(sessionOptions));
-app.use(express.json({ limit: '10kb' })); //app.use(bodyParser.json({ limit: '10kb' }));
+app.use(bodyParser.json({ limit: '10kb' })); //app.use(express.json({ limit: '10kb' }));
 app.use(logger);
 
 //Routers
@@ -26,6 +27,6 @@ app.use('/auth', routers.auth);
 app.use('/classes', routers.classes);
 app.use('/lessons', routers.lessons);
 
-
-app.use(errorHandler);
+app.use('*', otherRouterHandler);
+app.use(generalErrorHandler);
 export { app };
