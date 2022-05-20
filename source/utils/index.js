@@ -11,8 +11,8 @@ export { limiter }
 from './limiter.js';
 export { validator }
 from './validator';
-export { isAuthorization }
-from './isAuthorization';
+export { authenticate }
+from './authenticate';
 
 export { logger }
 from './logger';

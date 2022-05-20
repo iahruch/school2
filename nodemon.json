@@ -4,7 +4,7 @@
     "verbose": false,
     "watch": ["./source", "./package.json", "./swagger"],
     "env": {
-        "NODE_ENV": "test"
+        "NODE_ENV": "development"
     },
     "exec": "node -r dotenv/config -r @babel/register ./source/index.js",
     "ext": "js"

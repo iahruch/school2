@@ -9,3 +9,6 @@ from './classes';
 
 export { lessons }
 from './lessons';
+
+export { api }
+from './api';

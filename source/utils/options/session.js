@@ -9,6 +9,6 @@ export const sessionOptions = {
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        maxAge: 15 * 60 * 1000,
+        maxAge: 15 * 1000,
     },
 };

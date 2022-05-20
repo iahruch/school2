@@ -3,24 +3,24 @@ import { getLessons, createLesson } from './helpers';
 import { getLessonByHash, updateLessonByHash, deleteLessonByHash } from './hash';
 import { addLessonVideo, getVideoLesson, deleteVideoLesson } from './hash/videos';
 import { addKeynotesLesson, getKeynotesLesson, deleteKeynotesLesson } from './hash/keynotes';
-import { isAuthorization } from './../../utils';
+import { authenticate } from './../../utils';
 
 const router = express.Router();
 
 router.get('/', getLessons);
-router.post('/', [isAuthorization], createLesson);
+router.post('/', [authenticate], createLesson);
 
-router.get('/:lessonHash', [isAuthorization], getLessonByHash);
-router.put('/:lessonHash', [isAuthorization], updateLessonByHash);
-router.delete('/:lessonHash', [isAuthorization], deleteLessonByHash);
+router.get('/:lessonHash', [authenticate], getLessonByHash);
+router.put('/:lessonHash', [authenticate], updateLessonByHash);
+router.delete('/:lessonHash', [authenticate], deleteLessonByHash);
 
-router.post('/:lessonHash/videos', [isAuthorization], addLessonVideo);
-router.get('/:lessonHash/videos/:videoHash', [isAuthorization], getVideoLesson);
-router.delete('/:lessonHash/videos/:videoHash', [isAuthorization], deleteVideoLesson);
+router.post('/:lessonHash/videos', [authenticate], addLessonVideo);
+router.get('/:lessonHash/videos/:videoHash', [authenticate], getVideoLesson);
+router.delete('/:lessonHash/videos/:videoHash', [authenticate], deleteVideoLesson);
 
-router.post('/:lessonHash/keynotes', [isAuthorization], addKeynotesLesson);
+router.post('/:lessonHash/keynotes', [authenticate], addKeynotesLesson);
 
-router.get('/:lessonHash/keynotes/:keynoteHash', [isAuthorization], getKeynotesLesson);
-router.delete('/:lessonHash/keynotes/:keynoteHash', [isAuthorization], deleteKeynotesLesson);
+router.get('/:lessonHash/keynotes/:keynoteHash', [authenticate], getKeynotesLesson);
+router.delete('/:lessonHash/keynotes/:keynoteHash', [authenticate], deleteKeynotesLesson);
 
 export { router as lessons };

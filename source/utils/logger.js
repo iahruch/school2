@@ -7,25 +7,27 @@ const { combine, timestamp, printf, align } = format;
 // });
 
 export const logger = (req, res, next) => {
-    const { NODE_ENV } = process.env;
+    const logConfiguration = {
+        transports: [
+            new transports.Console({
+                level: 'debug',
+                format: combine(
+                    timestamp({ format: 'MMM-DD-YYYY HH:mm:ss' }),
+                    align(),
+                    printf((info) => `[${req.method}]: ${[ info.timestamp ]}: ${info.message}`),
+                ),
+            }),
+        ],
 
-    if (NODE_ENV !== 'production') {
-        const logConfiguration = {
-            transports: [
-                new transports.Console({
-                    level: 'debug',
-                    format: combine(
-                        timestamp({ format: 'MMM-DD-YYYY HH:mm:ss' }),
-                        align(),
-                        printf((info) => `[${req.method}]: ${[ info.timestamp ]}: ${info.message}`),
-                    ),
-                }),
-            ],
+    };
+    const logger = createLogger(logConfiguration);
 
-        };
-        const logger = createLogger(logConfiguration);
-        logger.info(JSON.stringify(req.body));
+    let body = null;
+
+    if (req.method !== 'GET') {
+        body = JSON.stringify(req.body, null, 2);
     }
+    logger.debug(body ? body : '');
 
     return next();
 };
