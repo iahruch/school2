@@ -18,8 +18,8 @@ import * as routers from './routers';
 
 const app = express();
 
-app.use(session(sessionOptions));
 app.use(bodyParser.json({ limit: '10kb' }));
+app.use(session(sessionOptions));
 
 //passport
 passportCong(passport);
